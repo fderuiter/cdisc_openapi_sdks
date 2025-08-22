@@ -1,0 +1,275 @@
+#' Create a new CdashigDomainFieldLinks
+#'
+#' @description
+#' CdashigDomainFieldLinks Class
+#'
+#' @docType class
+#' @title CdashigDomainFieldLinks
+#' @description CdashigDomainFieldLinks Class
+#' @format An \code{R6Class} generator object
+#' @field item_self  \link{CdashigDomainFieldRef} [optional]
+#' @field codelist  list(\link{RootCtCodelistRefElement}) [optional]
+#' @field parentProduct  \link{CdashigProductRef} [optional]
+#' @field parentDomain  \link{CdashigDomainRef} [optional]
+#' @field rootItem  \link{RootCdashigDomainFieldRef} [optional]
+#' @field priorVersion  \link{CdashigDomainFieldRef} [optional]
+#' @field sdtmClassMappingTargets  list(\link{SdtmClassVariableRefTarget}) [optional]
+#' @field sdtmigDatasetMappingTargets  list(\link{SdtmigDatasetVariableRefTarget}) [optional]
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+CdashigDomainFieldLinks <- R6::R6Class(
+  "CdashigDomainFieldLinks",
+  public = list(
+    `item_self` = NULL,
+    `codelist` = NULL,
+    `parentProduct` = NULL,
+    `parentDomain` = NULL,
+    `rootItem` = NULL,
+    `priorVersion` = NULL,
+    `sdtmClassMappingTargets` = NULL,
+    `sdtmigDatasetMappingTargets` = NULL,
+
+    #' @description
+    #' Initialize a new CdashigDomainFieldLinks class.
+    #'
+    #' @param item_self item_self
+    #' @param codelist codelist
+    #' @param parentProduct parentProduct
+    #' @param parentDomain parentDomain
+    #' @param rootItem rootItem
+    #' @param priorVersion priorVersion
+    #' @param sdtmClassMappingTargets sdtmClassMappingTargets
+    #' @param sdtmigDatasetMappingTargets sdtmigDatasetMappingTargets
+    #' @param ... Other optional arguments.
+    initialize = function(`item_self` = NULL, `codelist` = NULL, `parentProduct` = NULL, `parentDomain` = NULL, `rootItem` = NULL, `priorVersion` = NULL, `sdtmClassMappingTargets` = NULL, `sdtmigDatasetMappingTargets` = NULL, ...) {
+      if (!is.null(`item_self`)) {
+        stopifnot(R6::is.R6(`item_self`))
+        self$`item_self` <- `item_self`
+      }
+      if (!is.null(`codelist`)) {
+        stopifnot(is.vector(`codelist`), length(`codelist`) != 0)
+        sapply(`codelist`, function(x) stopifnot(R6::is.R6(x)))
+        self$`codelist` <- `codelist`
+      }
+      if (!is.null(`parentProduct`)) {
+        stopifnot(R6::is.R6(`parentProduct`))
+        self$`parentProduct` <- `parentProduct`
+      }
+      if (!is.null(`parentDomain`)) {
+        stopifnot(R6::is.R6(`parentDomain`))
+        self$`parentDomain` <- `parentDomain`
+      }
+      if (!is.null(`rootItem`)) {
+        stopifnot(R6::is.R6(`rootItem`))
+        self$`rootItem` <- `rootItem`
+      }
+      if (!is.null(`priorVersion`)) {
+        stopifnot(R6::is.R6(`priorVersion`))
+        self$`priorVersion` <- `priorVersion`
+      }
+      if (!is.null(`sdtmClassMappingTargets`)) {
+        stopifnot(is.vector(`sdtmClassMappingTargets`), length(`sdtmClassMappingTargets`) != 0)
+        sapply(`sdtmClassMappingTargets`, function(x) stopifnot(R6::is.R6(x)))
+        self$`sdtmClassMappingTargets` <- `sdtmClassMappingTargets`
+      }
+      if (!is.null(`sdtmigDatasetMappingTargets`)) {
+        stopifnot(is.vector(`sdtmigDatasetMappingTargets`), length(`sdtmigDatasetMappingTargets`) != 0)
+        sapply(`sdtmigDatasetMappingTargets`, function(x) stopifnot(R6::is.R6(x)))
+        self$`sdtmigDatasetMappingTargets` <- `sdtmigDatasetMappingTargets`
+      }
+    },
+
+    #' @description
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
+    toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return CdashigDomainFieldLinks as a base R list.
+    #' @examples
+    #' # convert array of CdashigDomainFieldLinks (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert CdashigDomainFieldLinks to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
+      CdashigDomainFieldLinksObject <- list()
+      if (!is.null(self$`item_self`)) {
+        CdashigDomainFieldLinksObject[["self"]] <-
+          self$`item_self`$toSimpleType()
+      }
+      if (!is.null(self$`codelist`)) {
+        CdashigDomainFieldLinksObject[["codelist"]] <-
+          lapply(self$`codelist`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`parentProduct`)) {
+        CdashigDomainFieldLinksObject[["parentProduct"]] <-
+          self$`parentProduct`$toSimpleType()
+      }
+      if (!is.null(self$`parentDomain`)) {
+        CdashigDomainFieldLinksObject[["parentDomain"]] <-
+          self$`parentDomain`$toSimpleType()
+      }
+      if (!is.null(self$`rootItem`)) {
+        CdashigDomainFieldLinksObject[["rootItem"]] <-
+          self$`rootItem`$toSimpleType()
+      }
+      if (!is.null(self$`priorVersion`)) {
+        CdashigDomainFieldLinksObject[["priorVersion"]] <-
+          self$`priorVersion`$toSimpleType()
+      }
+      if (!is.null(self$`sdtmClassMappingTargets`)) {
+        CdashigDomainFieldLinksObject[["sdtmClassMappingTargets"]] <-
+          lapply(self$`sdtmClassMappingTargets`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`sdtmigDatasetMappingTargets`)) {
+        CdashigDomainFieldLinksObject[["sdtmigDatasetMappingTargets"]] <-
+          lapply(self$`sdtmigDatasetMappingTargets`, function(x) x$toSimpleType())
+      }
+      return(CdashigDomainFieldLinksObject)
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of CdashigDomainFieldLinks
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of CdashigDomainFieldLinks
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`self`)) {
+        `item_self_object` <- CdashigDomainFieldRef$new()
+        `item_self_object`$fromJSON(jsonlite::toJSON(this_object$`self`, auto_unbox = TRUE, digits = NA))
+        self$`item_self` <- `item_self_object`
+      }
+      if (!is.null(this_object$`codelist`)) {
+        self$`codelist` <- ApiClient$new()$deserializeObj(this_object$`codelist`, "array[RootCtCodelistRefElement]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`parentProduct`)) {
+        `parentproduct_object` <- CdashigProductRef$new()
+        `parentproduct_object`$fromJSON(jsonlite::toJSON(this_object$`parentProduct`, auto_unbox = TRUE, digits = NA))
+        self$`parentProduct` <- `parentproduct_object`
+      }
+      if (!is.null(this_object$`parentDomain`)) {
+        `parentdomain_object` <- CdashigDomainRef$new()
+        `parentdomain_object`$fromJSON(jsonlite::toJSON(this_object$`parentDomain`, auto_unbox = TRUE, digits = NA))
+        self$`parentDomain` <- `parentdomain_object`
+      }
+      if (!is.null(this_object$`rootItem`)) {
+        `rootitem_object` <- RootCdashigDomainFieldRef$new()
+        `rootitem_object`$fromJSON(jsonlite::toJSON(this_object$`rootItem`, auto_unbox = TRUE, digits = NA))
+        self$`rootItem` <- `rootitem_object`
+      }
+      if (!is.null(this_object$`priorVersion`)) {
+        `priorversion_object` <- CdashigDomainFieldRef$new()
+        `priorversion_object`$fromJSON(jsonlite::toJSON(this_object$`priorVersion`, auto_unbox = TRUE, digits = NA))
+        self$`priorVersion` <- `priorversion_object`
+      }
+      if (!is.null(this_object$`sdtmClassMappingTargets`)) {
+        self$`sdtmClassMappingTargets` <- ApiClient$new()$deserializeObj(this_object$`sdtmClassMappingTargets`, "array[SdtmClassVariableRefTarget]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`sdtmigDatasetMappingTargets`)) {
+        self$`sdtmigDatasetMappingTargets` <- ApiClient$new()$deserializeObj(this_object$`sdtmigDatasetMappingTargets`, "array[SdtmigDatasetVariableRefTarget]", loadNamespace("openapi"))
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return CdashigDomainFieldLinks in JSON format
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of CdashigDomainFieldLinks
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of CdashigDomainFieldLinks
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      self$`item_self` <- CdashigDomainFieldRef$new()$fromJSON(jsonlite::toJSON(this_object$`item_self`, auto_unbox = TRUE, digits = NA))
+      self$`codelist` <- ApiClient$new()$deserializeObj(this_object$`codelist`, "array[RootCtCodelistRefElement]", loadNamespace("openapi"))
+      self$`parentProduct` <- CdashigProductRef$new()$fromJSON(jsonlite::toJSON(this_object$`parentProduct`, auto_unbox = TRUE, digits = NA))
+      self$`parentDomain` <- CdashigDomainRef$new()$fromJSON(jsonlite::toJSON(this_object$`parentDomain`, auto_unbox = TRUE, digits = NA))
+      self$`rootItem` <- RootCdashigDomainFieldRef$new()$fromJSON(jsonlite::toJSON(this_object$`rootItem`, auto_unbox = TRUE, digits = NA))
+      self$`priorVersion` <- CdashigDomainFieldRef$new()$fromJSON(jsonlite::toJSON(this_object$`priorVersion`, auto_unbox = TRUE, digits = NA))
+      self$`sdtmClassMappingTargets` <- ApiClient$new()$deserializeObj(this_object$`sdtmClassMappingTargets`, "array[SdtmClassVariableRefTarget]", loadNamespace("openapi"))
+      self$`sdtmigDatasetMappingTargets` <- ApiClient$new()$deserializeObj(this_object$`sdtmigDatasetMappingTargets`, "array[SdtmigDatasetVariableRefTarget]", loadNamespace("openapi"))
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to CdashigDomainFieldLinks and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of CdashigDomainFieldLinks
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# CdashigDomainFieldLinks$unlock()
+#
+## Below is an example to define the print function
+# CdashigDomainFieldLinks$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# CdashigDomainFieldLinks$lock()
+

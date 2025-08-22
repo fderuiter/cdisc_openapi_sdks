@@ -1,0 +1,15 @@
+Package: openapi
+Title: R Package Client for CDISC Library API
+Version: 1.0.0
+Author: person("CDISC Library Support", email = "cdisc_library_support@cdisc.org", role = c("aut", "cre"))
+Maintainer: CDISC Library Support <cdisc_library_support@cdisc.org>
+Description: REST API Documentation for CDISC Library in production server
+URL: https://github.com/GIT_USER_ID/GIT_REPO_ID
+BugReports: https://github.com/GIT_USER_ID/GIT_REPO_ID/issues
+Depends: R (>= 3.3)
+Encoding: UTF-8
+License: License for CDISC Members &amp; Open Source Developers
+LazyData: true
+Suggests: testthat
+Imports: jsonlite, httr, R6, base64enc, stringr
+RoxygenNote: 7.2.1
