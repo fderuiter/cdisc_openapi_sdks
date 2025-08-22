@@ -1,0 +1,19 @@
+# SDTMIG_DATASET_VARIABLE
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ordinal** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
+**name** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
+**label** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
+**description** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
+**role** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
+**simple_datatype** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
+**core** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
+**described_value_domain** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
+**value_list** | [**LIST [STRING_32]**](STRING_32.md) |  | [optional] [default to null]
+**var_links** | [**SDTMIG_DATASET_VARIABLE_LINKS**](SdtmigDatasetVariableLinks.md) |  | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
