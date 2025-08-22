@@ -1,0 +1,105 @@
+#include <map>
+#include <cstdlib>
+#include <glib-object.h>
+#include <json-glib/json-glib.h>
+#include "Helpers.h"
+
+
+#include "XmlAdamVariable.h"
+
+using namespace std;
+using namespace Tizen::ArtikCloud;
+
+XmlAdamVariable::XmlAdamVariable()
+{
+	//__init();
+}
+
+XmlAdamVariable::~XmlAdamVariable()
+{
+	//__cleanup();
+}
+
+void
+XmlAdamVariable::__init()
+{
+	//self = new AdamVariable();
+}
+
+void
+XmlAdamVariable::__cleanup()
+{
+	//if(self != NULL) {
+	//
+	//delete self;
+	//self = NULL;
+	//}
+	//
+}
+
+void
+XmlAdamVariable::fromJson(char* jsonStr)
+{
+	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
+	JsonNode *node;
+	const gchar *selfKey = "self";
+	node = json_object_get_member(pJsonObject, selfKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AdamVariable")) {
+			jsonToValue(&self, node, "AdamVariable", "AdamVariable");
+		} else {
+			
+			AdamVariable* obj = static_cast<AdamVariable*> (&self);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+}
+
+XmlAdamVariable::XmlAdamVariable(char* json)
+{
+	this->fromJson(json);
+}
+
+char*
+XmlAdamVariable::toJson()
+{
+	JsonObject *pJsonObject = json_object_new();
+	JsonNode *node;
+	if (isprimitive("AdamVariable")) {
+		AdamVariable obj = getSelf();
+		node = converttoJson(&obj, "AdamVariable", "");
+	}
+	else {
+		
+		AdamVariable obj = static_cast<AdamVariable> (getSelf());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *selfKey = "self";
+	json_object_set_member(pJsonObject, selfKey, node);
+	node = json_node_alloc();
+	json_node_init(node, JSON_NODE_OBJECT);
+	json_node_take_object(node, pJsonObject);
+	char * ret = json_to_string(node, false);
+	json_node_free(node);
+	return ret;
+}
+
+AdamVariable
+XmlAdamVariable::getSelf()
+{
+	return self;
+}
+
+void
+XmlAdamVariable::setSelf(AdamVariable  self)
+{
+	this->self = self;
+}
+
+
