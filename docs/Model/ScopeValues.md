@@ -1,0 +1,11 @@
+# # ScopeValues
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**total** | **float** |  | [optional]
+**has_more** | **bool** |  | [optional]
+**values** | **string[]** |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
