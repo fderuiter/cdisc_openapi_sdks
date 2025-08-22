@@ -1,0 +1,56 @@
+import 'package:test/test.dart';
+import 'package:openapi/openapi.dart';
+
+// tests for AdamVariable
+void main() {
+  final instance = AdamVariableBuilder();
+  // TODO add properties to the builder and call build()
+
+  group(AdamVariable, () {
+    // String ordinal
+    test('to test the property `ordinal`', () async {
+      // TODO
+    });
+
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // String label
+    test('to test the property `label`', () async {
+      // TODO
+    });
+
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // String core
+    test('to test the property `core`', () async {
+      // TODO
+    });
+
+    // String simpleDatatype
+    test('to test the property `simpleDatatype`', () async {
+      // TODO
+    });
+
+    // String describedValueDomain
+    test('to test the property `describedValueDomain`', () async {
+      // TODO
+    });
+
+    // BuiltList<String> valueList
+    test('to test the property `valueList`', () async {
+      // TODO
+    });
+
+    // AdamVariableLinks links
+    test('to test the property `links`', () async {
+      // TODO
+    });
+
+  });
+}
