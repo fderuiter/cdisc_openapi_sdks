@@ -1,0 +1,139 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+class ProductgroupDataTabulationLinks {
+  /// Returns a new [ProductgroupDataTabulationLinks] instance.
+  ProductgroupDataTabulationLinks({
+    this.self,
+    this.sdtm = const [],
+    this.sdtmig = const [],
+    this.sendig = const [],
+  });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ProductgroupRef? self;
+
+  List<SdtmProductRefElement> sdtm;
+
+  List<SdtmigProductRefElement> sdtmig;
+
+  List<SendigProductRefElement> sendig;
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is ProductgroupDataTabulationLinks &&
+    other.self == self &&
+    _deepEquality.equals(other.sdtm, sdtm) &&
+    _deepEquality.equals(other.sdtmig, sdtmig) &&
+    _deepEquality.equals(other.sendig, sendig);
+
+  @override
+  int get hashCode =>
+    // ignore: unnecessary_parenthesis
+    (self == null ? 0 : self!.hashCode) +
+    (sdtm.hashCode) +
+    (sdtmig.hashCode) +
+    (sendig.hashCode);
+
+  @override
+  String toString() => 'ProductgroupDataTabulationLinks[self=$self, sdtm=$sdtm, sdtmig=$sdtmig, sendig=$sendig]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (this.self != null) {
+      json[r'self'] = this.self;
+    } else {
+      json[r'self'] = null;
+    }
+      json[r'sdtm'] = this.sdtm;
+      json[r'sdtmig'] = this.sdtmig;
+      json[r'sendig'] = this.sendig;
+    return json;
+  }
+
+  /// Returns a new [ProductgroupDataTabulationLinks] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static ProductgroupDataTabulationLinks? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "ProductgroupDataTabulationLinks[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ProductgroupDataTabulationLinks[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return ProductgroupDataTabulationLinks(
+        self: ProductgroupRef.fromJson(json[r'self']),
+        sdtm: SdtmProductRefElement.listFromJson(json[r'sdtm']),
+        sdtmig: SdtmigProductRefElement.listFromJson(json[r'sdtmig']),
+        sendig: SendigProductRefElement.listFromJson(json[r'sendig']),
+      );
+    }
+    return null;
+  }
+
+  static List<ProductgroupDataTabulationLinks> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProductgroupDataTabulationLinks>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProductgroupDataTabulationLinks.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, ProductgroupDataTabulationLinks> mapFromJson(dynamic json) {
+    final map = <String, ProductgroupDataTabulationLinks>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = ProductgroupDataTabulationLinks.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of ProductgroupDataTabulationLinks-objects as value to a dart map
+  static Map<String, List<ProductgroupDataTabulationLinks>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ProductgroupDataTabulationLinks>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = ProductgroupDataTabulationLinks.listFromJson(entry.value, growable: growable,);
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+  };
+}
+
