@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lang: [java, javascript, python, ruby, r, rust, go, csharp, c]
+        lang: [ada, android, apex, bash, c, clojure, cpp-oatpp-client, cpp-qt-client, cpp-restsdk, cpp-tizen, csharp, dart, dart-dio, eiffel, elixir, elm, erlang-client, erlang-proper, gdscript, go, groovy, haskell-http-client, java, javascript, javascript-flowtyped, jaxrs-cxf-client, jmeter, kotlin, objc, ocaml, perl, php, python, python-pydantic-v1, r, ruby, rust, scala-akka, scala-gatling, scala-http4s, scala-pekko, scala-sttp, scalaz, swift-combine, swift5, typescript-angular, typescript-aurelia, typescript-axios, typescript-fetch, typescript-inversify, typescript-jquery, typescript-node, typescript-redux-query, typescript-rxjs, xojo-client]
     permissions:
       contents: write
     steps:
