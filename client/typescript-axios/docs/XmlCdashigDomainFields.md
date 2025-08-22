@@ -1,0 +1,20 @@
+# XmlCdashigDomainFields
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**self** | [**CdashigDomainFields**](CdashigDomainFields.md) |  | [optional] [default to undefined]
+
+## Example
+
+```typescript
+import { XmlCdashigDomainFields } from './api';
+
+const instance: XmlCdashigDomainFields = {
+    self,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

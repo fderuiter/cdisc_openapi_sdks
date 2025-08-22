@@ -1,0 +1,20 @@
+# XmlAdamProduct
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**self** | [**AdamProduct**](AdamProduct.md) |  | [optional] [default to undefined]
+
+## Example
+
+```typescript
+import { XmlAdamProduct } from './api';
+
+const instance: XmlAdamProduct = {
+    self,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
