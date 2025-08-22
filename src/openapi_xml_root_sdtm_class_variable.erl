@@ -1,0 +1,14 @@
+-module(openapi_xml_root_sdtm_class_variable).
+
+-export([encode/1]).
+
+-export_type([openapi_xml_root_sdtm_class_variable/0]).
+
+-type openapi_xml_root_sdtm_class_variable() ::
+    #{ 'self' => openapi_root_sdtm_class_variable:openapi_root_sdtm_class_variable()
+     }.
+
+encode(#{ 'self' := Self
+        }) ->
+    #{ 'self' => Self
+     }.
