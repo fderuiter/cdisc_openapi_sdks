@@ -1,0 +1,419 @@
+#  completion                               -*- shell-script -*-
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !
+# ! Note:
+# !
+# ! THIS SCRIPT HAS BEEN AUTOMATICALLY GENERATED USING
+# ! openapi-generator (https://openapi-generator.tech)
+# ! FROM OPENAPI SPECIFICATION IN JSON.
+# !
+# ! Generator version: 7.16.0-SNAPSHOT
+# !
+# !
+# ! System wide installation:
+# !
+# ! $ sudo cp .bash-completion /etc/bash-completion.d/
+# !
+# !
+# ! User home installation (add this line to .bash_profile):
+# !
+# ! [ -r ~/.bash-completion ] && source ~/.bash-completion
+# !
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+declare -A mime_type_abbreviations
+# text/*
+mime_type_abbreviations["text"]="text/plain"
+mime_type_abbreviations["html"]="text/html"
+mime_type_abbreviations["md"]="text/x-markdown"
+mime_type_abbreviations["csv"]="text/csv"
+mime_type_abbreviations["css"]="text/css"
+mime_type_abbreviations["rtf"]="text/rtf"
+# application/*
+mime_type_abbreviations["json"]="application/json"
+mime_type_abbreviations["xml"]="application/xml"
+mime_type_abbreviations["yaml"]="application/yaml"
+mime_type_abbreviations["js"]="application/javascript"
+mime_type_abbreviations["bin"]="application/octet-stream"
+mime_type_abbreviations["rdf"]="application/rdf+xml"
+# image/*
+mime_type_abbreviations["jpg"]="image/jpeg"
+mime_type_abbreviations["png"]="image/png"
+mime_type_abbreviations["gif"]="image/gif"
+mime_type_abbreviations["bmp"]="image/bmp"
+mime_type_abbreviations["tiff"]="image/tiff"
+
+
+#
+# Check if this is OSX, if so defined custom init_completion
+#
+if [[ `uname` =~ "Darwin" ]]; then
+    __osx_init_completion()
+    {
+        COMPREPLY=()
+        _get_comp_words_by_ref cur prev words cword
+    }
+fi
+
+_()
+{
+    local cur
+    local prev
+    local words
+    local cword
+
+    # The reference of currently selected REST operation
+    local operation=""
+
+    # The list of available operation in the REST service
+    # It's modelled as an associative array for efficient key lookup
+    declare -A operations
+    operations["mdrAdamProductDatastructuresGet"]=1
+    operations["mdrAdamProductDatastructuresStructureGet"]=1
+    operations["mdrAdamProductDatastructuresStructureVariablesGet"]=1
+    operations["mdrAdamProductDatastructuresStructureVariablesVarGet"]=1
+    operations["mdrAdamProductDatastructuresStructureVarsetsGet"]=1
+    operations["mdrAdamProductDatastructuresStructureVarsetsVarsetGet"]=1
+    operations["mdrAdamProductGet"]=1
+    operations["mdrCdashigVersionClassesClassDomainsGet"]=1
+    operations["mdrCdashigVersionClassesClassGet"]=1
+    operations["mdrCdashigVersionClassesClassScenariosGet"]=1
+    operations["mdrCdashigVersionClassesGet"]=1
+    operations["mdrCdashigVersionDomainsDomainFieldsFieldGet"]=1
+    operations["mdrCdashigVersionDomainsDomainFieldsGet"]=1
+    operations["mdrCdashigVersionDomainsDomainGet"]=1
+    operations["mdrCdashigVersionDomainsGet"]=1
+    operations["mdrCdashigVersionGet"]=1
+    operations["mdrCdashigVersionScenariosDomainScenarioFieldsFieldGet"]=1
+    operations["mdrCdashigVersionScenariosDomainScenarioFieldsGet"]=1
+    operations["mdrCdashigVersionScenariosDomainScenarioGet"]=1
+    operations["mdrCdashigVersionScenariosGet"]=1
+    operations["mdrRootCdashigDomainsDomainFieldsFieldGet"]=1
+    operations["mdrRootCdashigScenariosDomainScenarioFieldsFieldGet"]=1
+    operations["mdrCdashVersionClassesClassDomainsGet"]=1
+    operations["mdrCdashVersionClassesClassFieldsFieldGet"]=1
+    operations["mdrCdashVersionClassesClassGet"]=1
+    operations["mdrCdashVersionClassesGet"]=1
+    operations["mdrCdashVersionDomainsDomainFieldsFieldGet"]=1
+    operations["mdrCdashVersionDomainsDomainFieldsGet"]=1
+    operations["mdrCdashVersionDomainsDomainGet"]=1
+    operations["mdrCdashVersionDomainsGet"]=1
+    operations["mdrCdashVersionGet"]=1
+    operations["mdrRootCdashClassesClassFieldsFieldGet"]=1
+    operations["mdrRootCdashDomainsDomainFieldsFieldGet"]=1
+    operations["mdrCtPackagesGet"]=1
+    operations["mdrCtPackagesPackageCodelistsCodelistGet"]=1
+    operations["mdrCtPackagesPackageCodelistsCodelistTermsGet"]=1
+    operations["mdrCtPackagesPackageCodelistsCodelistTermsTermGet"]=1
+    operations["mdrCtPackagesPackageCodelistsGet"]=1
+    operations["mdrCtPackagesProductGet"]=1
+    operations["mdrRootCtProductGroupCodelistsCodelistGet"]=1
+    operations["mdrRootCtProductGroupCodelistsCodelistTermsTermGet"]=1
+    operations["mdrAboutGet"]=1
+    operations["mdrLastupdatedGet"]=1
+    operations["mdrProductsDataAnalysisGet"]=1
+    operations["mdrProductsDataCollectionGet"]=1
+    operations["mdrProductsDataTabulationGet"]=1
+    operations["mdrProductsGet"]=1
+    operations["mdrProductsMeasuresGet"]=1
+    operations["mdrProductsTerminologyGet"]=1
+    operations["mdrQrsMeasureVersionGet"]=1
+    operations["mdrQrsMeasureVersionItemsGet"]=1
+    operations["mdrQrsMeasureVersionItemsItemGet"]=1
+    operations["mdrQrsMeasureVersionResponsegroupsGet"]=1
+    operations["mdrQrsMeasureVersionResponsegroupsResponsegroupGet"]=1
+    operations["mdrRootSdtmigDatasetsDatasetVariablesVarGet"]=1
+    operations["mdrSdtmigVersionClassesClassDatasetsGet"]=1
+    operations["mdrSdtmigVersionClassesClassGet"]=1
+    operations["mdrSdtmigVersionClassesGet"]=1
+    operations["mdrSdtmigVersionDatasetsDatasetGet"]=1
+    operations["mdrSdtmigVersionDatasetsDatasetVariablesGet"]=1
+    operations["mdrSdtmigVersionDatasetsDatasetVariablesVarGet"]=1
+    operations["mdrSdtmigVersionDatasetsGet"]=1
+    operations["mdrSdtmigVersionGet"]=1
+    operations["mdrRootSendigDatasetsDatasetVariablesVarGet"]=1
+    operations["mdrSendigVersionClassesClassDatasetsGet"]=1
+    operations["mdrSendigVersionClassesClassGet"]=1
+    operations["mdrSendigVersionClassesGet"]=1
+    operations["mdrSendigVersionDatasetsDatasetGet"]=1
+    operations["mdrSendigVersionDatasetsDatasetVariablesGet"]=1
+    operations["mdrSendigVersionDatasetsDatasetVariablesVarGet"]=1
+    operations["mdrSendigVersionDatasetsGet"]=1
+    operations["mdrSendigVersionGet"]=1
+    operations["mdrSearchGet"]=1
+    operations["mdrSearchScopesGet"]=1
+    operations["mdrSearchScopesScopeGet"]=1
+    operations["healthGet"]=1
+    operations["mdrMaintenanceGet"]=1
+    operations["mdrRootSdtmClassesClassVariablesVarGet"]=1
+    operations["mdrRootSdtmDatasetsDatasetVariablesVarGet"]=1
+    operations["mdrSdtmVersionClassesClassDatasetsGet"]=1
+    operations["mdrSdtmVersionClassesClassGet"]=1
+    operations["mdrSdtmVersionClassesClassVariablesGet"]=1
+    operations["mdrSdtmVersionClassesClassVariablesVarGet"]=1
+    operations["mdrSdtmVersionClassesGet"]=1
+    operations["mdrSdtmVersionDatasetsDatasetGet"]=1
+    operations["mdrSdtmVersionDatasetsDatasetVariablesGet"]=1
+    operations["mdrSdtmVersionDatasetsDatasetVariablesVarGet"]=1
+    operations["mdrSdtmVersionDatasetsGet"]=1
+    operations["mdrSdtmVersionGet"]=1
+
+    # An associative array of operations to their parameters
+    # Only include path, query and header parameters
+    declare -A operation_parameters
+    operation_parameters["mdrAdamProductDatastructuresGet"]="product= "
+    operation_parameters["mdrAdamProductDatastructuresStructureGet"]="product= structure= "
+    operation_parameters["mdrAdamProductDatastructuresStructureVariablesGet"]="product= structure= "
+    operation_parameters["mdrAdamProductDatastructuresStructureVariablesVarGet"]="product= structure= var= "
+    operation_parameters["mdrAdamProductDatastructuresStructureVarsetsGet"]="product= structure= "
+    operation_parameters["mdrAdamProductDatastructuresStructureVarsetsVarsetGet"]="product= structure= varset= "
+    operation_parameters["mdrAdamProductGet"]="product= "
+    operation_parameters["mdrCdashigVersionClassesClassDomainsGet"]="version= class= "
+    operation_parameters["mdrCdashigVersionClassesClassGet"]="version= class= "
+    operation_parameters["mdrCdashigVersionClassesClassScenariosGet"]="version= class= "
+    operation_parameters["mdrCdashigVersionClassesGet"]="version= "
+    operation_parameters["mdrCdashigVersionDomainsDomainFieldsFieldGet"]="version= domain= field= "
+    operation_parameters["mdrCdashigVersionDomainsDomainFieldsGet"]="version= domain= "
+    operation_parameters["mdrCdashigVersionDomainsDomainGet"]="version= domain= "
+    operation_parameters["mdrCdashigVersionDomainsGet"]="version= "
+    operation_parameters["mdrCdashigVersionGet"]="version= "
+    operation_parameters["mdrCdashigVersionScenariosDomainScenarioFieldsFieldGet"]="version= domain= scenario= field= "
+    operation_parameters["mdrCdashigVersionScenariosDomainScenarioFieldsGet"]="version= domain= scenario= "
+    operation_parameters["mdrCdashigVersionScenariosDomainScenarioGet"]="version= domain= scenario= "
+    operation_parameters["mdrCdashigVersionScenariosGet"]="version= "
+    operation_parameters["mdrRootCdashigDomainsDomainFieldsFieldGet"]="domain= field= "
+    operation_parameters["mdrRootCdashigScenariosDomainScenarioFieldsFieldGet"]="domain= scenario= field= "
+    operation_parameters["mdrCdashVersionClassesClassDomainsGet"]="version= class= "
+    operation_parameters["mdrCdashVersionClassesClassFieldsFieldGet"]="version= class= field= "
+    operation_parameters["mdrCdashVersionClassesClassGet"]="version= class= "
+    operation_parameters["mdrCdashVersionClassesGet"]="version= "
+    operation_parameters["mdrCdashVersionDomainsDomainFieldsFieldGet"]="version= domain= field= "
+    operation_parameters["mdrCdashVersionDomainsDomainFieldsGet"]="version= domain= "
+    operation_parameters["mdrCdashVersionDomainsDomainGet"]="version= domain= "
+    operation_parameters["mdrCdashVersionDomainsGet"]="version= "
+    operation_parameters["mdrCdashVersionGet"]="version= "
+    operation_parameters["mdrRootCdashClassesClassFieldsFieldGet"]="class= field= "
+    operation_parameters["mdrRootCdashDomainsDomainFieldsFieldGet"]="domain= field= "
+    operation_parameters["mdrCtPackagesGet"]=""
+    operation_parameters["mdrCtPackagesPackageCodelistsCodelistGet"]="package= codelist= "
+    operation_parameters["mdrCtPackagesPackageCodelistsCodelistTermsGet"]="package= codelist= "
+    operation_parameters["mdrCtPackagesPackageCodelistsCodelistTermsTermGet"]="package= codelist= term= "
+    operation_parameters["mdrCtPackagesPackageCodelistsGet"]="package= "
+    operation_parameters["mdrCtPackagesProductGet"]="product= "
+    operation_parameters["mdrRootCtProductGroupCodelistsCodelistGet"]="productGroup= codelist= "
+    operation_parameters["mdrRootCtProductGroupCodelistsCodelistTermsTermGet"]="productGroup= codelist= term= "
+    operation_parameters["mdrAboutGet"]=""
+    operation_parameters["mdrLastupdatedGet"]=""
+    operation_parameters["mdrProductsDataAnalysisGet"]=""
+    operation_parameters["mdrProductsDataCollectionGet"]=""
+    operation_parameters["mdrProductsDataTabulationGet"]=""
+    operation_parameters["mdrProductsGet"]=""
+    operation_parameters["mdrProductsMeasuresGet"]=""
+    operation_parameters["mdrProductsTerminologyGet"]=""
+    operation_parameters["mdrQrsMeasureVersionGet"]="measure= version= "
+    operation_parameters["mdrQrsMeasureVersionItemsGet"]="measure= version= "
+    operation_parameters["mdrQrsMeasureVersionItemsItemGet"]="measure= version= item= "
+    operation_parameters["mdrQrsMeasureVersionResponsegroupsGet"]="measure= version= "
+    operation_parameters["mdrQrsMeasureVersionResponsegroupsResponsegroupGet"]="measure= version= responsegroup= "
+    operation_parameters["mdrRootSdtmigDatasetsDatasetVariablesVarGet"]="dataset= var= "
+    operation_parameters["mdrSdtmigVersionClassesClassDatasetsGet"]="version= class= "
+    operation_parameters["mdrSdtmigVersionClassesClassGet"]="version= class= "
+    operation_parameters["mdrSdtmigVersionClassesGet"]="version= "
+    operation_parameters["mdrSdtmigVersionDatasetsDatasetGet"]="version= dataset= "
+    operation_parameters["mdrSdtmigVersionDatasetsDatasetVariablesGet"]="version= dataset= "
+    operation_parameters["mdrSdtmigVersionDatasetsDatasetVariablesVarGet"]="version= dataset= var= "
+    operation_parameters["mdrSdtmigVersionDatasetsGet"]="version= "
+    operation_parameters["mdrSdtmigVersionGet"]="version= "
+    operation_parameters["mdrRootSendigDatasetsDatasetVariablesVarGet"]="dataset= var= "
+    operation_parameters["mdrSendigVersionClassesClassDatasetsGet"]="version= class= "
+    operation_parameters["mdrSendigVersionClassesClassGet"]="version= class= "
+    operation_parameters["mdrSendigVersionClassesGet"]="version= "
+    operation_parameters["mdrSendigVersionDatasetsDatasetGet"]="version= dataset= "
+    operation_parameters["mdrSendigVersionDatasetsDatasetVariablesGet"]="version= dataset= "
+    operation_parameters["mdrSendigVersionDatasetsDatasetVariablesVarGet"]="version= dataset= var= "
+    operation_parameters["mdrSendigVersionDatasetsGet"]="version= "
+    operation_parameters["mdrSendigVersionGet"]="version= "
+    operation_parameters["mdrSearchGet"]="q= highlight= start= pageSize= class= codelist= conceptId= core= dataStructure= datasetStructure= definition= description= domain= effectiveDate= extensible= href= label= measureType= name= preferredTerm= product= productGroup= registrationStatus= roleDescription= sdtmTarget= simpleDatatype= submissionValue= synonyms= type= uiHref= valueDomain= variableSet= version= "
+    operation_parameters["mdrSearchScopesGet"]=""
+    operation_parameters["mdrSearchScopesScopeGet"]="scope= "
+    operation_parameters["healthGet"]=""
+    operation_parameters["mdrMaintenanceGet"]=""
+    operation_parameters["mdrRootSdtmClassesClassVariablesVarGet"]="class= var= "
+    operation_parameters["mdrRootSdtmDatasetsDatasetVariablesVarGet"]="dataset= var= "
+    operation_parameters["mdrSdtmVersionClassesClassDatasetsGet"]="version= class= "
+    operation_parameters["mdrSdtmVersionClassesClassGet"]="version= class= "
+    operation_parameters["mdrSdtmVersionClassesClassVariablesGet"]="version= class= "
+    operation_parameters["mdrSdtmVersionClassesClassVariablesVarGet"]="version= class= var= "
+    operation_parameters["mdrSdtmVersionClassesGet"]="version= "
+    operation_parameters["mdrSdtmVersionDatasetsDatasetGet"]="version= dataset= "
+    operation_parameters["mdrSdtmVersionDatasetsDatasetVariablesGet"]="version= dataset= "
+    operation_parameters["mdrSdtmVersionDatasetsDatasetVariablesVarGet"]="version= dataset= var= "
+    operation_parameters["mdrSdtmVersionDatasetsGet"]="version= "
+    operation_parameters["mdrSdtmVersionGet"]="version= "
+
+    # An associative array of possible values for enum parameters
+    declare -A operation_parameters_enum_values
+
+    #
+    # Check if this is OSX and use special __osx_init_completion function
+    #
+    if [[ `uname` =~ "Darwin" ]]; then
+        __osx_init_completion || return
+    else
+        _init_completion -s || return
+    fi
+
+
+    # Check if operation is already in the command line provided
+    for word in "${words[@]}"; do
+        if [[ -n $word && ${operations[$word]} ]]; then
+            operation="${word}"
+        fi
+    done
+
+    if [[ -z $operation ]]; then
+        case $prev in
+            --ciphers|--connect-timeout|-C|--continue-at|-F|--form|--form-string|\
+            --ftp-account|--ftp-alternative-to-user|-P|--ftp-port|-H|--header|-h|\
+            --help|--hostpubmd5|--keepalive-time|--krb|--limit-rate|--local-port|\
+            --mail-from|--mail-rcpt|--max-filesize|--max-redirs|-m|--max-time|\
+            --pass|--proto|--proto-redir|--proxy-user|--proxy1.0|-Q|--quote|-r|\
+            --range|-X|--request|--retry|--retry-delay|--retry-max-time|\
+            --socks5-gssapi-service|-t|--telnet-option|--tftp-blksize|-z|\
+            --time-cond|--url|-u|--user|-A|--user-agent|-V|--version|-w|\
+            --write-out|--resolve|--tlsuser|--tlspassword|--about)
+                return
+                ;;
+            -K|--config|-b|--cookie|-c|--cookie-jar|-D|--dump-header|--egd-file|\
+            --key|--libcurl|-o|--output|--random-file|-T|--upload-file|--trace|\
+            --trace-ascii|--netrc-file)
+                _filedir
+                return
+                ;;
+            --cacert|-E|--cert)
+                _filedir '@(c?(e)rt|cer|pem|der)'
+                return
+                ;;
+            --capath)
+                _filedir -d
+                return
+                ;;
+            --cert-type|--key-type)
+                COMPREPLY=( $( compgen -W 'DER PEM ENG' -- "$cur" ) )
+                return
+                ;;
+            --crlfile)
+                _filedir crl
+                return
+                ;;
+            -d|--data|--data-ascii|--data-binary|--data-urlencode)
+                if [[ $cur == \@* ]]; then
+                    cur=${cur:1}
+                    _filedir
+                    COMPREPLY=( "${COMPREPLY[@]/#/@}" )
+                fi
+                return
+                ;;
+            --delegation)
+                COMPREPLY=( $( compgen -W 'none policy always' -- "$cur" ) )
+                return
+                ;;
+            --engine)
+                COMPREPLY=( $( compgen -W 'list' -- "$cur" ) )
+                return
+                ;;
+            --ftp-method)
+                COMPREPLY=( $( compgen -W 'multicwd nocwd singlecwd' -- "$cur" ) )
+                return
+                ;;
+            --ftp-ssl-ccc-mode)
+                COMPREPLY=( $( compgen -W 'active passive' -- "$cur" ) )
+                return
+                ;;
+            --interface)
+                _available_interfaces -a
+                return
+                ;;
+            -x|--proxy|--socks4|--socks4a|--socks5|--socks5-hostname)
+                _known_hosts_real
+                return
+                ;;
+            --pubkey)
+                _filedir pub
+                return
+                ;;
+            --stderr)
+                COMPREPLY=( $( compgen -W '-' -- "$cur" ) )
+                _filedir
+                return
+                ;;
+            --tlsauthtype)
+                COMPREPLY=( $( compgen -W 'SRP' -- "$cur" ) )
+                return
+                ;;
+            --host)
+                COMPREPLY=( $( compgen -W 'http:// https://' -- "$cur" ) )
+                return
+                ;;
+            -ct|--content-type|-ac|--accept)
+                COMPREPLY=( $( compgen -W '${!mime_type_abbreviations[*]}' -- "$cur" ) )
+                return
+                ;;
+        esac
+    fi
+
+    #
+    # Complete the server address based on ~/.ssh/known_hosts
+    # and ~/.ssh/config
+    #
+    local prefix=${COMP_WORDS[COMP_CWORD-2]}
+    local colon=${COMP_WORDS[COMP_CWORD-1]}
+    if [[ "$colon" == ":" && ( $prefix == "https" || $prefix == "http" ) ]]; then
+        COMPREPLY=()
+        local comp_ssh_hosts=`[[ -f ~/.ssh/known_hosts ]] && \
+                              ( cat ~/.ssh/known_hosts | \
+                              grep '^[a-zA-Z0-9]' | \
+                              cut -f 1 -d ' ' | \
+                              sed -e s/,.*//g | \
+                              grep -v ^# | \
+                              uniq | \
+                              grep -v "\[" ) ;
+                              [[ -f ~/.ssh/config ]] && \
+                              ( cat ~/.ssh/config | \
+                              grep "^Host " | \
+                              awk '{print $2}' )`
+        COMPREPLY=( $( compgen -P '//' -W '${comp_ssh_hosts}' -- "${cur:2}") )
+        return
+    fi
+
+    #
+    # Complete the  and cURL's arguments
+    #
+    if [[ $cur == -* ]]; then
+        COMPREPLY=( $( compgen -W '$(_parse_help curl) $(_parse_help $1)' -- "$cur" ) )
+        return
+    fi
+
+    #
+    # If the argument starts with a letter this could be either an operation
+    # or an operation parameter
+    # When $cur is empty, suggest the list of operations by default
+    #
+    if [[ $cur =~ ^[A-Za-z_0-9]* ]]; then
+        # If operation has not been yet selected, suggest the list of operations
+        # otherwise suggest arguments of this operation as declared in the
+        # OpenAPI specification
+        if [[ -z $operation ]]; then
+            COMPREPLY=( $(compgen -W '${!operations[*]}' -- ${cur}) )
+        else
+            COMPREPLY=( $(compgen -W '${operation_parameters[$operation]}' -- ${cur}) )
+            compopt -o nospace
+        fi
+        return
+    fi
+
+} &&
+complete -F _ 
+
+# ex: ts=4 sw=4 et filetype=sh
