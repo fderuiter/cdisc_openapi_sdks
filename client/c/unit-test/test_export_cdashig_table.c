@@ -1,0 +1,60 @@
+#ifndef export_cdashig_table_TEST
+#define export_cdashig_table_TEST
+
+// the following is to include only the main from the first c file
+#ifndef TEST_MAIN
+#define TEST_MAIN
+#define export_cdashig_table_MAIN
+#endif // TEST_MAIN
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include "../external/cJSON.h"
+
+#include "../model/export_cdashig_table.h"
+export_cdashig_table_t* instantiate_export_cdashig_table(int include_optional);
+
+
+
+export_cdashig_table_t* instantiate_export_cdashig_table(int include_optional) {
+  export_cdashig_table_t* export_cdashig_table = NULL;
+  if (include_optional) {
+    export_cdashig_table = export_cdashig_table_create(
+      list_createList(),
+      list_createList()
+    );
+  } else {
+    export_cdashig_table = export_cdashig_table_create(
+      list_createList(),
+      list_createList()
+    );
+  }
+
+  return export_cdashig_table;
+}
+
+
+#ifdef export_cdashig_table_MAIN
+
+void test_export_cdashig_table(int include_optional) {
+    export_cdashig_table_t* export_cdashig_table_1 = instantiate_export_cdashig_table(include_optional);
+
+	cJSON* jsonexport_cdashig_table_1 = export_cdashig_table_convertToJSON(export_cdashig_table_1);
+	printf("export_cdashig_table :\n%s\n", cJSON_Print(jsonexport_cdashig_table_1));
+	export_cdashig_table_t* export_cdashig_table_2 = export_cdashig_table_parseFromJSON(jsonexport_cdashig_table_1);
+	cJSON* jsonexport_cdashig_table_2 = export_cdashig_table_convertToJSON(export_cdashig_table_2);
+	printf("repeating export_cdashig_table:\n%s\n", cJSON_Print(jsonexport_cdashig_table_2));
+}
+
+int main() {
+  test_export_cdashig_table(1);
+  test_export_cdashig_table(0);
+
+  printf("Hello world \n");
+  return 0;
+}
+
+#endif // export_cdashig_table_MAIN
+#endif // export_cdashig_table_TEST

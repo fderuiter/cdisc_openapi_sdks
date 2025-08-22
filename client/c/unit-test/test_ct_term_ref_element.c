@@ -1,0 +1,62 @@
+#ifndef ct_term_ref_element_TEST
+#define ct_term_ref_element_TEST
+
+// the following is to include only the main from the first c file
+#ifndef TEST_MAIN
+#define TEST_MAIN
+#define ct_term_ref_element_MAIN
+#endif // TEST_MAIN
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include "../external/cJSON.h"
+
+#include "../model/ct_term_ref_element.h"
+ct_term_ref_element_t* instantiate_ct_term_ref_element(int include_optional);
+
+
+
+ct_term_ref_element_t* instantiate_ct_term_ref_element(int include_optional) {
+  ct_term_ref_element_t* ct_term_ref_element = NULL;
+  if (include_optional) {
+    ct_term_ref_element = ct_term_ref_element_create(
+      "/mdr/ct/packages/sdtmct-2019-12-20/codelists/C67154/terms/C64796",
+      "Hematocrit Measurement",
+      "Code List Value"
+    );
+  } else {
+    ct_term_ref_element = ct_term_ref_element_create(
+      "/mdr/ct/packages/sdtmct-2019-12-20/codelists/C67154/terms/C64796",
+      "Hematocrit Measurement",
+      "Code List Value"
+    );
+  }
+
+  return ct_term_ref_element;
+}
+
+
+#ifdef ct_term_ref_element_MAIN
+
+void test_ct_term_ref_element(int include_optional) {
+    ct_term_ref_element_t* ct_term_ref_element_1 = instantiate_ct_term_ref_element(include_optional);
+
+	cJSON* jsonct_term_ref_element_1 = ct_term_ref_element_convertToJSON(ct_term_ref_element_1);
+	printf("ct_term_ref_element :\n%s\n", cJSON_Print(jsonct_term_ref_element_1));
+	ct_term_ref_element_t* ct_term_ref_element_2 = ct_term_ref_element_parseFromJSON(jsonct_term_ref_element_1);
+	cJSON* jsonct_term_ref_element_2 = ct_term_ref_element_convertToJSON(ct_term_ref_element_2);
+	printf("repeating ct_term_ref_element:\n%s\n", cJSON_Print(jsonct_term_ref_element_2));
+}
+
+int main() {
+  test_ct_term_ref_element(1);
+  test_ct_term_ref_element(0);
+
+  printf("Hello world \n");
+  return 0;
+}
+
+#endif // ct_term_ref_element_MAIN
+#endif // ct_term_ref_element_TEST

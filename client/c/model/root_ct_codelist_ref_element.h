@@ -1,0 +1,42 @@
+/*
+ * root_ct_codelist_ref_element.h
+ *
+ * 
+ */
+
+#ifndef _root_ct_codelist_ref_element_H_
+#define _root_ct_codelist_ref_element_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct root_ct_codelist_ref_element_t root_ct_codelist_ref_element_t;
+
+
+
+
+typedef struct root_ct_codelist_ref_element_t {
+    char *href; // string
+    char *title; // string
+    char *type; // string
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} root_ct_codelist_ref_element_t;
+
+__attribute__((deprecated)) root_ct_codelist_ref_element_t *root_ct_codelist_ref_element_create(
+    char *href,
+    char *title,
+    char *type
+);
+
+void root_ct_codelist_ref_element_free(root_ct_codelist_ref_element_t *root_ct_codelist_ref_element);
+
+root_ct_codelist_ref_element_t *root_ct_codelist_ref_element_parseFromJSON(cJSON *root_ct_codelist_ref_elementJSON);
+
+cJSON *root_ct_codelist_ref_element_convertToJSON(root_ct_codelist_ref_element_t *root_ct_codelist_ref_element);
+
+#endif /* _root_ct_codelist_ref_element_H_ */
+

@@ -1,0 +1,39 @@
+/*
+ * xml_cdash_domain_fields.h
+ *
+ * 
+ */
+
+#ifndef _xml_cdash_domain_fields_H_
+#define _xml_cdash_domain_fields_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct xml_cdash_domain_fields_t xml_cdash_domain_fields_t;
+
+#include "cdash_domain_fields.h"
+
+
+
+typedef struct xml_cdash_domain_fields_t {
+    struct cdash_domain_fields_t *self; //model
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} xml_cdash_domain_fields_t;
+
+__attribute__((deprecated)) xml_cdash_domain_fields_t *xml_cdash_domain_fields_create(
+    cdash_domain_fields_t *self
+);
+
+void xml_cdash_domain_fields_free(xml_cdash_domain_fields_t *xml_cdash_domain_fields);
+
+xml_cdash_domain_fields_t *xml_cdash_domain_fields_parseFromJSON(cJSON *xml_cdash_domain_fieldsJSON);
+
+cJSON *xml_cdash_domain_fields_convertToJSON(xml_cdash_domain_fields_t *xml_cdash_domain_fields);
+
+#endif /* _xml_cdash_domain_fields_H_ */
+

@@ -1,0 +1,39 @@
+/*
+ * xml_sendig_dataset.h
+ *
+ * 
+ */
+
+#ifndef _xml_sendig_dataset_H_
+#define _xml_sendig_dataset_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct xml_sendig_dataset_t xml_sendig_dataset_t;
+
+#include "sendig_dataset.h"
+
+
+
+typedef struct xml_sendig_dataset_t {
+    struct sendig_dataset_t *self; //model
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} xml_sendig_dataset_t;
+
+__attribute__((deprecated)) xml_sendig_dataset_t *xml_sendig_dataset_create(
+    sendig_dataset_t *self
+);
+
+void xml_sendig_dataset_free(xml_sendig_dataset_t *xml_sendig_dataset);
+
+xml_sendig_dataset_t *xml_sendig_dataset_parseFromJSON(cJSON *xml_sendig_datasetJSON);
+
+cJSON *xml_sendig_dataset_convertToJSON(xml_sendig_dataset_t *xml_sendig_dataset);
+
+#endif /* _xml_sendig_dataset_H_ */
+

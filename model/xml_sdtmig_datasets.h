@@ -1,0 +1,39 @@
+/*
+ * xml_sdtmig_datasets.h
+ *
+ * 
+ */
+
+#ifndef _xml_sdtmig_datasets_H_
+#define _xml_sdtmig_datasets_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct xml_sdtmig_datasets_t xml_sdtmig_datasets_t;
+
+#include "sdtmig_datasets.h"
+
+
+
+typedef struct xml_sdtmig_datasets_t {
+    struct sdtmig_datasets_t *self; //model
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} xml_sdtmig_datasets_t;
+
+__attribute__((deprecated)) xml_sdtmig_datasets_t *xml_sdtmig_datasets_create(
+    sdtmig_datasets_t *self
+);
+
+void xml_sdtmig_datasets_free(xml_sdtmig_datasets_t *xml_sdtmig_datasets);
+
+xml_sdtmig_datasets_t *xml_sdtmig_datasets_parseFromJSON(cJSON *xml_sdtmig_datasetsJSON);
+
+cJSON *xml_sdtmig_datasets_convertToJSON(xml_sdtmig_datasets_t *xml_sdtmig_datasets);
+
+#endif /* _xml_sdtmig_datasets_H_ */
+

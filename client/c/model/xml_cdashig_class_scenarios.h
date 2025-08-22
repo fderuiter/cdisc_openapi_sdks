@@ -1,0 +1,39 @@
+/*
+ * xml_cdashig_class_scenarios.h
+ *
+ * 
+ */
+
+#ifndef _xml_cdashig_class_scenarios_H_
+#define _xml_cdashig_class_scenarios_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct xml_cdashig_class_scenarios_t xml_cdashig_class_scenarios_t;
+
+#include "cdashig_class_scenarios.h"
+
+
+
+typedef struct xml_cdashig_class_scenarios_t {
+    struct cdashig_class_scenarios_t *self; //model
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} xml_cdashig_class_scenarios_t;
+
+__attribute__((deprecated)) xml_cdashig_class_scenarios_t *xml_cdashig_class_scenarios_create(
+    cdashig_class_scenarios_t *self
+);
+
+void xml_cdashig_class_scenarios_free(xml_cdashig_class_scenarios_t *xml_cdashig_class_scenarios);
+
+xml_cdashig_class_scenarios_t *xml_cdashig_class_scenarios_parseFromJSON(cJSON *xml_cdashig_class_scenariosJSON);
+
+cJSON *xml_cdashig_class_scenarios_convertToJSON(xml_cdashig_class_scenarios_t *xml_cdashig_class_scenarios);
+
+#endif /* _xml_cdashig_class_scenarios_H_ */
+

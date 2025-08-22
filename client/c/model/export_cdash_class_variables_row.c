@@ -1,0 +1,528 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include "export_cdash_class_variables_row.h"
+
+
+
+static export_cdash_class_variables_row_t *export_cdash_class_variables_row_create_internal(
+    char *version,
+    char *_class,
+    char *domain,
+    char *variable_order,
+    char *cdash_variable,
+    char *cdash_variable_label,
+    char *draft_cdash_definition,
+    char *domain_specific,
+    char *question_text,
+    char *prompt,
+    char *type,
+    list_t *sdtm_target,
+    char *mapping_instructions,
+    char *controlled_terminology_codelist_name,
+    char *implementation_notes
+    ) {
+    export_cdash_class_variables_row_t *export_cdash_class_variables_row_local_var = malloc(sizeof(export_cdash_class_variables_row_t));
+    if (!export_cdash_class_variables_row_local_var) {
+        return NULL;
+    }
+    export_cdash_class_variables_row_local_var->version = version;
+    export_cdash_class_variables_row_local_var->_class = _class;
+    export_cdash_class_variables_row_local_var->domain = domain;
+    export_cdash_class_variables_row_local_var->variable_order = variable_order;
+    export_cdash_class_variables_row_local_var->cdash_variable = cdash_variable;
+    export_cdash_class_variables_row_local_var->cdash_variable_label = cdash_variable_label;
+    export_cdash_class_variables_row_local_var->draft_cdash_definition = draft_cdash_definition;
+    export_cdash_class_variables_row_local_var->domain_specific = domain_specific;
+    export_cdash_class_variables_row_local_var->question_text = question_text;
+    export_cdash_class_variables_row_local_var->prompt = prompt;
+    export_cdash_class_variables_row_local_var->type = type;
+    export_cdash_class_variables_row_local_var->sdtm_target = sdtm_target;
+    export_cdash_class_variables_row_local_var->mapping_instructions = mapping_instructions;
+    export_cdash_class_variables_row_local_var->controlled_terminology_codelist_name = controlled_terminology_codelist_name;
+    export_cdash_class_variables_row_local_var->implementation_notes = implementation_notes;
+
+    export_cdash_class_variables_row_local_var->_library_owned = 1;
+    return export_cdash_class_variables_row_local_var;
+}
+
+__attribute__((deprecated)) export_cdash_class_variables_row_t *export_cdash_class_variables_row_create(
+    char *version,
+    char *_class,
+    char *domain,
+    char *variable_order,
+    char *cdash_variable,
+    char *cdash_variable_label,
+    char *draft_cdash_definition,
+    char *domain_specific,
+    char *question_text,
+    char *prompt,
+    char *type,
+    list_t *sdtm_target,
+    char *mapping_instructions,
+    char *controlled_terminology_codelist_name,
+    char *implementation_notes
+    ) {
+    return export_cdash_class_variables_row_create_internal (
+        version,
+        _class,
+        domain,
+        variable_order,
+        cdash_variable,
+        cdash_variable_label,
+        draft_cdash_definition,
+        domain_specific,
+        question_text,
+        prompt,
+        type,
+        sdtm_target,
+        mapping_instructions,
+        controlled_terminology_codelist_name,
+        implementation_notes
+        );
+}
+
+void export_cdash_class_variables_row_free(export_cdash_class_variables_row_t *export_cdash_class_variables_row) {
+    if(NULL == export_cdash_class_variables_row){
+        return ;
+    }
+    if(export_cdash_class_variables_row->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "export_cdash_class_variables_row_free");
+        return ;
+    }
+    listEntry_t *listEntry;
+    if (export_cdash_class_variables_row->version) {
+        free(export_cdash_class_variables_row->version);
+        export_cdash_class_variables_row->version = NULL;
+    }
+    if (export_cdash_class_variables_row->_class) {
+        free(export_cdash_class_variables_row->_class);
+        export_cdash_class_variables_row->_class = NULL;
+    }
+    if (export_cdash_class_variables_row->domain) {
+        free(export_cdash_class_variables_row->domain);
+        export_cdash_class_variables_row->domain = NULL;
+    }
+    if (export_cdash_class_variables_row->variable_order) {
+        free(export_cdash_class_variables_row->variable_order);
+        export_cdash_class_variables_row->variable_order = NULL;
+    }
+    if (export_cdash_class_variables_row->cdash_variable) {
+        free(export_cdash_class_variables_row->cdash_variable);
+        export_cdash_class_variables_row->cdash_variable = NULL;
+    }
+    if (export_cdash_class_variables_row->cdash_variable_label) {
+        free(export_cdash_class_variables_row->cdash_variable_label);
+        export_cdash_class_variables_row->cdash_variable_label = NULL;
+    }
+    if (export_cdash_class_variables_row->draft_cdash_definition) {
+        free(export_cdash_class_variables_row->draft_cdash_definition);
+        export_cdash_class_variables_row->draft_cdash_definition = NULL;
+    }
+    if (export_cdash_class_variables_row->domain_specific) {
+        free(export_cdash_class_variables_row->domain_specific);
+        export_cdash_class_variables_row->domain_specific = NULL;
+    }
+    if (export_cdash_class_variables_row->question_text) {
+        free(export_cdash_class_variables_row->question_text);
+        export_cdash_class_variables_row->question_text = NULL;
+    }
+    if (export_cdash_class_variables_row->prompt) {
+        free(export_cdash_class_variables_row->prompt);
+        export_cdash_class_variables_row->prompt = NULL;
+    }
+    if (export_cdash_class_variables_row->type) {
+        free(export_cdash_class_variables_row->type);
+        export_cdash_class_variables_row->type = NULL;
+    }
+    if (export_cdash_class_variables_row->sdtm_target) {
+        list_ForEach(listEntry, export_cdash_class_variables_row->sdtm_target) {
+            free(listEntry->data);
+        }
+        list_freeList(export_cdash_class_variables_row->sdtm_target);
+        export_cdash_class_variables_row->sdtm_target = NULL;
+    }
+    if (export_cdash_class_variables_row->mapping_instructions) {
+        free(export_cdash_class_variables_row->mapping_instructions);
+        export_cdash_class_variables_row->mapping_instructions = NULL;
+    }
+    if (export_cdash_class_variables_row->controlled_terminology_codelist_name) {
+        free(export_cdash_class_variables_row->controlled_terminology_codelist_name);
+        export_cdash_class_variables_row->controlled_terminology_codelist_name = NULL;
+    }
+    if (export_cdash_class_variables_row->implementation_notes) {
+        free(export_cdash_class_variables_row->implementation_notes);
+        export_cdash_class_variables_row->implementation_notes = NULL;
+    }
+    free(export_cdash_class_variables_row);
+}
+
+cJSON *export_cdash_class_variables_row_convertToJSON(export_cdash_class_variables_row_t *export_cdash_class_variables_row) {
+    cJSON *item = cJSON_CreateObject();
+
+    // export_cdash_class_variables_row->version
+    if(export_cdash_class_variables_row->version) {
+    if(cJSON_AddStringToObject(item, "Version", export_cdash_class_variables_row->version) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->_class
+    if(export_cdash_class_variables_row->_class) {
+    if(cJSON_AddStringToObject(item, "Class", export_cdash_class_variables_row->_class) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->domain
+    if(export_cdash_class_variables_row->domain) {
+    if(cJSON_AddStringToObject(item, "Domain", export_cdash_class_variables_row->domain) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->variable_order
+    if(export_cdash_class_variables_row->variable_order) {
+    if(cJSON_AddStringToObject(item, "Variable Order", export_cdash_class_variables_row->variable_order) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->cdash_variable
+    if(export_cdash_class_variables_row->cdash_variable) {
+    if(cJSON_AddStringToObject(item, "CDASH Variable", export_cdash_class_variables_row->cdash_variable) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->cdash_variable_label
+    if(export_cdash_class_variables_row->cdash_variable_label) {
+    if(cJSON_AddStringToObject(item, "CDASH Variable Label", export_cdash_class_variables_row->cdash_variable_label) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->draft_cdash_definition
+    if(export_cdash_class_variables_row->draft_cdash_definition) {
+    if(cJSON_AddStringToObject(item, "DRAFT CDASH Definition", export_cdash_class_variables_row->draft_cdash_definition) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->domain_specific
+    if(export_cdash_class_variables_row->domain_specific) {
+    if(cJSON_AddStringToObject(item, "Domain Specific", export_cdash_class_variables_row->domain_specific) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->question_text
+    if(export_cdash_class_variables_row->question_text) {
+    if(cJSON_AddStringToObject(item, "Question Text", export_cdash_class_variables_row->question_text) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->prompt
+    if(export_cdash_class_variables_row->prompt) {
+    if(cJSON_AddStringToObject(item, "Prompt", export_cdash_class_variables_row->prompt) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->type
+    if(export_cdash_class_variables_row->type) {
+    if(cJSON_AddStringToObject(item, "Type", export_cdash_class_variables_row->type) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->sdtm_target
+    if(export_cdash_class_variables_row->sdtm_target) {
+    cJSON *sdtm_target = cJSON_AddArrayToObject(item, "SDTM Target");
+    if(sdtm_target == NULL) {
+        goto fail; //primitive container
+    }
+
+    listEntry_t *sdtm_targetListEntry;
+    list_ForEach(sdtm_targetListEntry, export_cdash_class_variables_row->sdtm_target) {
+    if(cJSON_AddStringToObject(sdtm_target, "", sdtm_targetListEntry->data) == NULL)
+    {
+        goto fail;
+    }
+    }
+    }
+
+
+    // export_cdash_class_variables_row->mapping_instructions
+    if(export_cdash_class_variables_row->mapping_instructions) {
+    if(cJSON_AddStringToObject(item, "Mapping Instructions", export_cdash_class_variables_row->mapping_instructions) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->controlled_terminology_codelist_name
+    if(export_cdash_class_variables_row->controlled_terminology_codelist_name) {
+    if(cJSON_AddStringToObject(item, "Controlled Terminology Codelist Name", export_cdash_class_variables_row->controlled_terminology_codelist_name) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // export_cdash_class_variables_row->implementation_notes
+    if(export_cdash_class_variables_row->implementation_notes) {
+    if(cJSON_AddStringToObject(item, "Implementation Notes", export_cdash_class_variables_row->implementation_notes) == NULL) {
+    goto fail; //String
+    }
+    }
+
+    return item;
+fail:
+    if (item) {
+        cJSON_Delete(item);
+    }
+    return NULL;
+}
+
+export_cdash_class_variables_row_t *export_cdash_class_variables_row_parseFromJSON(cJSON *export_cdash_class_variables_rowJSON){
+
+    export_cdash_class_variables_row_t *export_cdash_class_variables_row_local_var = NULL;
+
+    // define the local list for export_cdash_class_variables_row->sdtm_target
+    list_t *sdtm_targetList = NULL;
+
+    // export_cdash_class_variables_row->version
+    cJSON *version = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Version");
+    if (cJSON_IsNull(version)) {
+        version = NULL;
+    }
+    if (version) { 
+    if(!cJSON_IsString(version) && !cJSON_IsNull(version))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->_class
+    cJSON *_class = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Class");
+    if (cJSON_IsNull(_class)) {
+        _class = NULL;
+    }
+    if (_class) { 
+    if(!cJSON_IsString(_class) && !cJSON_IsNull(_class))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->domain
+    cJSON *domain = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Domain");
+    if (cJSON_IsNull(domain)) {
+        domain = NULL;
+    }
+    if (domain) { 
+    if(!cJSON_IsString(domain) && !cJSON_IsNull(domain))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->variable_order
+    cJSON *variable_order = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Variable Order");
+    if (cJSON_IsNull(variable_order)) {
+        variable_order = NULL;
+    }
+    if (variable_order) { 
+    if(!cJSON_IsString(variable_order) && !cJSON_IsNull(variable_order))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->cdash_variable
+    cJSON *cdash_variable = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "CDASH Variable");
+    if (cJSON_IsNull(cdash_variable)) {
+        cdash_variable = NULL;
+    }
+    if (cdash_variable) { 
+    if(!cJSON_IsString(cdash_variable) && !cJSON_IsNull(cdash_variable))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->cdash_variable_label
+    cJSON *cdash_variable_label = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "CDASH Variable Label");
+    if (cJSON_IsNull(cdash_variable_label)) {
+        cdash_variable_label = NULL;
+    }
+    if (cdash_variable_label) { 
+    if(!cJSON_IsString(cdash_variable_label) && !cJSON_IsNull(cdash_variable_label))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->draft_cdash_definition
+    cJSON *draft_cdash_definition = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "DRAFT CDASH Definition");
+    if (cJSON_IsNull(draft_cdash_definition)) {
+        draft_cdash_definition = NULL;
+    }
+    if (draft_cdash_definition) { 
+    if(!cJSON_IsString(draft_cdash_definition) && !cJSON_IsNull(draft_cdash_definition))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->domain_specific
+    cJSON *domain_specific = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Domain Specific");
+    if (cJSON_IsNull(domain_specific)) {
+        domain_specific = NULL;
+    }
+    if (domain_specific) { 
+    if(!cJSON_IsString(domain_specific) && !cJSON_IsNull(domain_specific))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->question_text
+    cJSON *question_text = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Question Text");
+    if (cJSON_IsNull(question_text)) {
+        question_text = NULL;
+    }
+    if (question_text) { 
+    if(!cJSON_IsString(question_text) && !cJSON_IsNull(question_text))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->prompt
+    cJSON *prompt = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Prompt");
+    if (cJSON_IsNull(prompt)) {
+        prompt = NULL;
+    }
+    if (prompt) { 
+    if(!cJSON_IsString(prompt) && !cJSON_IsNull(prompt))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->sdtm_target
+    cJSON *sdtm_target = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "SDTM Target");
+    if (cJSON_IsNull(sdtm_target)) {
+        sdtm_target = NULL;
+    }
+    if (sdtm_target) { 
+    cJSON *sdtm_target_local = NULL;
+    if(!cJSON_IsArray(sdtm_target)) {
+        goto end;//primitive container
+    }
+    sdtm_targetList = list_createList();
+
+    cJSON_ArrayForEach(sdtm_target_local, sdtm_target)
+    {
+        if(!cJSON_IsString(sdtm_target_local))
+        {
+            goto end;
+        }
+        list_addElement(sdtm_targetList , strdup(sdtm_target_local->valuestring));
+    }
+    }
+
+    // export_cdash_class_variables_row->mapping_instructions
+    cJSON *mapping_instructions = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Mapping Instructions");
+    if (cJSON_IsNull(mapping_instructions)) {
+        mapping_instructions = NULL;
+    }
+    if (mapping_instructions) { 
+    if(!cJSON_IsString(mapping_instructions) && !cJSON_IsNull(mapping_instructions))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->controlled_terminology_codelist_name
+    cJSON *controlled_terminology_codelist_name = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Controlled Terminology Codelist Name");
+    if (cJSON_IsNull(controlled_terminology_codelist_name)) {
+        controlled_terminology_codelist_name = NULL;
+    }
+    if (controlled_terminology_codelist_name) { 
+    if(!cJSON_IsString(controlled_terminology_codelist_name) && !cJSON_IsNull(controlled_terminology_codelist_name))
+    {
+    goto end; //String
+    }
+    }
+
+    // export_cdash_class_variables_row->implementation_notes
+    cJSON *implementation_notes = cJSON_GetObjectItemCaseSensitive(export_cdash_class_variables_rowJSON, "Implementation Notes");
+    if (cJSON_IsNull(implementation_notes)) {
+        implementation_notes = NULL;
+    }
+    if (implementation_notes) { 
+    if(!cJSON_IsString(implementation_notes) && !cJSON_IsNull(implementation_notes))
+    {
+    goto end; //String
+    }
+    }
+
+
+    export_cdash_class_variables_row_local_var = export_cdash_class_variables_row_create_internal (
+        version && !cJSON_IsNull(version) ? strdup(version->valuestring) : NULL,
+        _class && !cJSON_IsNull(_class) ? strdup(_class->valuestring) : NULL,
+        domain && !cJSON_IsNull(domain) ? strdup(domain->valuestring) : NULL,
+        variable_order && !cJSON_IsNull(variable_order) ? strdup(variable_order->valuestring) : NULL,
+        cdash_variable && !cJSON_IsNull(cdash_variable) ? strdup(cdash_variable->valuestring) : NULL,
+        cdash_variable_label && !cJSON_IsNull(cdash_variable_label) ? strdup(cdash_variable_label->valuestring) : NULL,
+        draft_cdash_definition && !cJSON_IsNull(draft_cdash_definition) ? strdup(draft_cdash_definition->valuestring) : NULL,
+        domain_specific && !cJSON_IsNull(domain_specific) ? strdup(domain_specific->valuestring) : NULL,
+        question_text && !cJSON_IsNull(question_text) ? strdup(question_text->valuestring) : NULL,
+        prompt && !cJSON_IsNull(prompt) ? strdup(prompt->valuestring) : NULL,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
+        sdtm_target ? sdtm_targetList : NULL,
+        mapping_instructions && !cJSON_IsNull(mapping_instructions) ? strdup(mapping_instructions->valuestring) : NULL,
+        controlled_terminology_codelist_name && !cJSON_IsNull(controlled_terminology_codelist_name) ? strdup(controlled_terminology_codelist_name->valuestring) : NULL,
+        implementation_notes && !cJSON_IsNull(implementation_notes) ? strdup(implementation_notes->valuestring) : NULL
+        );
+
+    return export_cdash_class_variables_row_local_var;
+end:
+    if (sdtm_targetList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, sdtm_targetList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(sdtm_targetList);
+        sdtm_targetList = NULL;
+    }
+    return NULL;
+
+}
