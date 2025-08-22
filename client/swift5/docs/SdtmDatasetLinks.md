@@ -1,0 +1,13 @@
+# SdtmDatasetLinks
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**_self** | [**SdtmDatasetRef**](SdtmDatasetRef.md) |  | [optional] 
+**parentProduct** | [**SdtmProductRef**](SdtmProductRef.md) |  | [optional] 
+**parentClass** | [**SdtmClassRef**](SdtmClassRef.md) |  | [optional] 
+**priorVersion** | [**SdtmDatasetRef**](SdtmDatasetRef.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
